@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 8</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Designs" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04---Cart-Opened---Filled" transform="translate(-1390.000000, -355.000000)">
+            <g id="Group-8" transform="translate(1390.000000, 355.000000)">
+                <circle id="Oval" fill="#BEA482" fill-rule="nonzero" cx="10" cy="10" r="10"></circle>
+                <g id="Icon/X/Black" transform="translate(4.000000, 4.000000)" fill="#000000">
+                    <g id="Icon/Plus/Black" transform="translate(6.000000, 6.000000) rotate(45.000000) translate(-6.000000, -6.000000) ">
+                        <path d="M6.5,5.5 L12,5.5 L12,6.5 L6.5,6.5 L6.5,12 L5.5,12 L5.5,6.5 L0,6.5 L0,5.5 L5.5,5.5 L5.5,0 L6.5,0 L6.5,5.5 Z" id="Combined-Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

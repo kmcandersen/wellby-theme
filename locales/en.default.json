@@ -1,0 +1,63 @@
+{
+  "general": {
+    "404": {
+      "title": "Sorry, we can’t find that page.",
+      "subtext_html": "The page you were looking for does not exist",
+      "back": "Back to Wellby"
+    },
+    "shop": {
+      "title": "Wellby",
+      "description": "Artisanal goods.",
+      "sub_description": "For a life well lived."
+      },
+    "about": {
+      "title": "About Us",
+      "description": "We're a lifestyle shop selling a limited assortment of products handmade in our Silver Lake, Los Angeles studio. We are fueled by the joys we've found in some of life's simplest things, and we apply that joy to each of our creations."
+    }
+  },
+  "header": {
+    "nav": {
+      "shop": "Shop"
+    }   
+  },  
+  "cart": {
+    "button": {
+      "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}</span>)",
+      "close": "Close"
+    },
+    "empty": {
+      "title": "Your cart is empty",
+      "button": "Keep Shopping"
+    }, 
+    "filled": {
+      "title": "Your Cart",
+      "subtotal": "Subtotal",
+      "button": "Checkout"
+    }
+  }, 
+  "footer": {
+    "list": {
+      "products": "Our Products"
+    },
+    "bottom": {
+      "copyright": "©{{ date }}  Wellby, Inc."
+    },     
+    "social": {
+      "facebook_url": "https://www.facebook.com/superhidotcom/",
+      "twitter_handle": "superhi_",
+      "instagram_handle": "hisuperhi",
+      "alt": "Wellby on {{ social }}"
+    }      
+  },
+  "product": {
+    "card": {
+      "options": "{{ optionCount }} options",
+      "more_info": "More Info"
+    },
+    "form": {
+      "quantity": "Quantity",
+      "submit": "Add to Cart",
+      "sold_out": "Sold Out"
+    }
+  }
+}
