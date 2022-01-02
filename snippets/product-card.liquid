@@ -1,0 +1,23 @@
+<div class="product-card">
+    <div class="card-info">
+        <a href="{{ product.url }}">{{ product.title }}
+            <span class="price">{{ product.price | money_without_trailing_zeros }}</span>
+        </a>
+        <p>{{ product.description | strip_html | split: '.' | first | append: '.'}}</p>
+        {% if product.variants.size > 1 %}
+            {{ 'product.card.options' | t: optionCount: product.variants.size }}
+            &mdash;
+        {% endif %}
+
+        {% if product.available %}
+            <a href="{{ product.url }}">{{ 'product.card.more_info' | t }}</a>
+        {% else %}
+            {{ 'product.form.sold_out' | t }}
+        {% endif %}
+    </div>
+    <div class="card-image">
+        <a href="{{ product.url }}">
+            <img src="{{ product.featured_image.src | img_url: '1200x900', crop: 'center' }}" alt="{{ product.featured_image.alt | escape }}">
+        </a>
+    </div>
+</div>
