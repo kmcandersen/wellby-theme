@@ -1,24 +1,33 @@
-<form action="/cart/add" enctype="multipart/form-data" id="AddToCartForm" method="post">
+<form action="/cart/add" enctype="multipart/form-data" id="add-to-cart-form" method="post">
 
     {% if product.variants.size > 1 %}
-        {% for variant in product.variants %}
-            <input id="variant-{{ forloop.index }}" class="js-variant-radio" name="id" type="radio" value="{{ variant.id }}" data-inventory-quantity="{{ variant.inventory_quantity}}" {% unless variant.available %} disabled {% endunless %}>
-            <label for="variant-{{ forloop.index }}">{{ variant.title }}</label>
-        {% endfor %}
+        <div class="option-row">
+            <span class="option-title">{{product.options.first}}</span>
+            <div class="option-fieldset">
+                {% for variant in product.variants %}
+                    <input id="variant-{{ forloop.index }}" class="js-variant-radio" name="id" type="radio" value="{{ variant.id }}" data-inventory-quantity="{{ variant.inventory_quantity}}" {% unless variant.available %} disabled {% endunless %}>
+                    <label for="variant-{{ forloop.index }}">{{ variant.title }}</label>
+                {% endfor %}
+            </div>
+        </div>
     {% else %}
         <input type="hidden" name="id" value="{{ product.variants.first.id }}">
     {% endif %}
 
-    {% if product.variants.size == 1 %}
-        {% assign inventoryQty = product.variants.first.inventory_quantity %}
-    {% endif %}
-
-    <label for="Quantity">{{ 'product.form.quantity' | t }}</label>
-    <input id="Quantity" class="js-quantity-field" name="quantity" type="number" value="1" min="1" max="{{inventoryQty}}">
-
-    <button class="quantity-btn js-quantity-btn minus" disabled type="button">&ndash;</button>
-    <span class="quantity-text js-quantity-text">1</span>
-    <button class="quantity-btn js-quantity-btn plus" type="button" {% unless product.variants.size == 1 %} disabled {% endunless %}>+</button>
+    <div class="option-row">
+        <label for="Quantity">{{ 'product.form.quantity' | t }}</label>
+        <div class="option-fieldset">
+            <div class="visually-hidden">
+                {% if product.variants.size == 1 %}
+                    {% assign inventoryQty = product.variants.first.inventory_quantity %}
+                {% endif %}
+                <input id="Quantity" class="js-quantity-field" name="quantity" type="number" value="1" min="1" max="{{inventoryQty}}">
+            </div>
+            <button class="quantity-btn js-quantity-btn minus" disabled type="button">&ndash;</button>
+            <span class="quantity-text js-quantity-text">1</span>
+            <button class="quantity-btn js-quantity-btn plus" type="button" {% unless product.variants.size == 1 %} disabled {% endunless %}>+</button>
+        </div>
+    </div>
 
     <button id="add-to-cart-btn" name="add" type="submit" {% unless product.variants.size == 1 %} disabled {% endunless %}>Add to cart</button>
 </form>
