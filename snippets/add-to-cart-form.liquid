@@ -1,21 +1,24 @@
 <form action="/cart/add" enctype="multipart/form-data" id="AddToCartForm" method="post">
+
     {% if product.variants.size > 1 %}
         {% for variant in product.variants %}
-            <input id="variant-{{ forloop.index }}" name="id" type="radio" value="{{ variant.id }}">
+            <input id="variant-{{ forloop.index }}" class="js-variant-radio" name="id" type="radio" value="{{ variant.id }}" data-inventory-quantity="{{ variant.inventory_quantity}}" {% unless variant.available %} disabled {% endunless %}>
             <label for="variant-{{ forloop.index }}">{{ variant.title }}</label>
         {% endfor %}
-        {% else %}
-            <input type="hidden" name="id" value="{{ product.variants.first.id }}" >
+    {% else %}
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
     {% endif %}
 
-    {{ current_variant.price | money }}
-    <label for="Quantity">quantity</label>
-    <input id="Quantity" min="1" name="quantity" type="number" value="1" min="1" {% if product.variants.size == 1 %} max="{{ product.variants.first.inventory.quantity }}" {% endif %}>
+    {% if product.variants.size == 1 %}
+        {% assign inventoryQty = product.variants.first.inventory_quantity %}
+    {% endif %}
 
+    <label for="Quantity">{{ 'product.form.quantity' | t }}</label>
+    <input id="Quantity" class="js-quantity-field" name="quantity" type="number" value="1" min="1" max="{{inventoryQty}}">
 
-    <button class="minus" disabled type="button">&ndash;</button>
-    <span class="quantity-text">1</span>
-    <button class="plus" type="button">+</button>
+    <button class="quantity-btn js-quantity-btn minus" disabled type="button">&ndash;</button>
+    <span class="quantity-text js-quantity-text">1</span>
+    <button class="quantity-btn js-quantity-btn plus" type="button" {% unless product.variants.size == 1 %} disabled {% endunless %}>+</button>
 
-    <button id="AddToCart" name="add" type="submit">Add to cart</button>
+    <button id="add-to-cart-btn" name="add" type="submit" {% unless product.variants.size == 1 %} disabled {% endunless %}>Add to cart</button>
 </form>
