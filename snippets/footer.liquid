@@ -1,55 +1,55 @@
 <footer class="footer-global">
-    <div class="footer-top">
-        <ul class="products-list"></ul>
-        {{ 'footer.list.products' | t }}
+    <div class="footer-top grid">
+        <ul class="products-list">
+            <h4 class="spaced-caps">{{ 'footer.list.products' | t }}</h4>
 
-        {% for product in collections.frontpage.products limit:4 %}
-            <li>
-                <a href="{{ product.url }}">{{ product.title }}</a>
-            </li>
-        {% endfor %}
+            {% for product in collections.frontpage.products limit:4 %}
+                <li>
+                    <a class="h2" href="{{ product.url }}">{{ product.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
 
+        <ul class="contact-list">
+            <h4 class="spaced-caps">{{ linklists.footer.title }}</h4>
+
+            {% for link in linklists.footer.links %}
+                <li>
+                    {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                        [
+                        {% for childlink in linklists[child_list_handle].links %}
+                            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                        {% endfor %}]
+                    {% else %}
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="about-us">
+            <h4 class="spaced-caps">{{ 'general.about.title' | t }}</h4>
+            <p>{{ 'general.about.description' | t }}</p>
+        </div>
     </div>
 
-    <ul class="contact-list">
-        {{ linklists.footer.title }}
-
-        {% for link in linklists.footer.links %}
-            <li>
-                {% assign child_list_handle = link.title | handleize %}
-                {% if linklists[child_list_handle].links != blank %}
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                    [
-                    {% for childlink in linklists[child_list_handle].links %}
-                        <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                    {% endfor %}]
-                {% else %}
-                    <a href="{{ link.url }}">{{ link.title }}</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-
-    <div class="about-us">
-        {{ 'general.about.title' | t }}
-        <p>{{ 'general.about.description' | t }}</p>
-    </div>
-
-    <div class="footer-bottom">
+    <div class="footer-bottom flex-space-between">
         {% assign copyright_date = 'now' | date:'%Y' %}
-        <span>{{ 'footer.bottom.copyright' | t: date: copyright_date }}</span>
-    </div>
+        <span class="h4 spaced-caps">{{ 'footer.bottom.copyright' | t: date: copyright_date }}</span>
 
-    <div class="social_links">
-        <a href="{{ 'footer.social.facebook_url' | t }}" target="new">
-            <img src="{{ 'facebook.svg' | asset_url }}" alt="{{ 'footer.social.alt' | t: social: 'Facebook' }}">
-        </a>
-        <a href="https://instagram.com/{{ 'footer.social.instagram_handle' | t }}" target="new">
-            <img src="{{ 'instagram.svg' | asset_url }}" alt="{{ 'footer.social.alt' | t: social: 'Instagram' }}">
-        </a>
-        <a href="https://twitter.com/{{ 'footer.social.twitter_handle' | t }}" target="new">
-            <img src="{{ 'twitter.svg' | asset_url }}" alt="{{ 'footer-social.alt' | t: social: 'Twitter' }}">
-        </a>
+        <div class="social-links">
+            <a href="{{ 'footer.social.facebook_url' | t }}" target="new">
+                <img src="{{ 'facebook.svg' | asset_url }}" alt="{{ 'footer.social.alt' | t: social: 'Facebook' }}">
+            </a>
+            <a href="https://instagram.com/{{ 'footer.social.instagram_handle' | t }}" target="new">
+                <img src="{{ 'instagram.svg' | asset_url }}" alt="{{ 'footer.social.alt' | t: social: 'Instagram' }}">
+            </a>
+            <a href="https://twitter.com/{{ 'footer.social.twitter_handle' | t }}" target="new">
+                <img src="{{ 'twitter.svg' | asset_url }}" alt="{{ 'footer-social.alt' | t: social: 'Twitter' }}">
+            </a>
+        </div>
     </div>
 
 

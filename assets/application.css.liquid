@@ -1,2 +1,205 @@
-// Put your styles in this file.
-// Note: "@import" rules aren’t supported.
+:root {
+    --headline-font: 'Georgia', 'Times New Roman', Times, serif;
+    --text-font: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+    --black: #000000;
+    --white: #FFFFFF;
+
+    --light-black: #333333;
+
+    --text-color: #555555;
+    --text-color-white: #CCCCCC;
+    --text-color-light: #707070;
+    --text-color-light-white: #AAAAAA;
+
+    --gold: #BEA482;
+
+    --background-color: #F7F2EA;
+    --header-background-color: #EEE6DD;
+    --footer-background-color: #F4EDE6;
+    --border-color: rgba(0,0,0,0.15);
+    --border-color-white: rgba(255,255,255,0.15);
+
+    --standard-border: 1px solid var(--border-color);
+    --standard-border-white: 1px solid var(--border-color-white);
+
+    --line-global: 20px;
+    --gutter-global: var(--line-global);
+    --offset-global: calc(var(--line-global) * 2);
+
+    --header-height: calc(var(--line-global) * 4);
+
+    --type-headline-lg: 50px;
+    --type-headline-med: 30px;
+    --type-body-med: 15px;
+    --type-body-sm: 13px;
+
+    --type-bold: 700;
+    --type-book: 400;
+}
+
+/* BASE STYLES */
+
+* {
+    font-family: var(--text-font);
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+    line-height: var(--line-global);
+}
+
+body {
+    font-size: var(--type-body-med);
+    background-color: var(--background-color);
+    background-image: url(background.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding-top: calc(var(--header-height) + var(--offset-global));
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+    font-weight: var(--type-book);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+/* STYLE GUIDE */
+
+/* prev mixins */
+.flex-space-between {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+ }
+ 
+ .spaced-caps {
+     font-size: var(--type-body-sm);
+     font-weight: var(--type-bold);
+     text-transform: uppercase;
+     letter-spacing: 0.075em;
+ }
+ /* */
+
+h1, .h1, h2, .h2 {
+    font-family: var(--headline-font);
+    font-weight: var(--type-bold);
+    color: var(--light-black);
+}
+
+h1, .h1 {
+    font-size: var(--type-headline-lg);
+    line-height: calc(var(--line-global) * 3)
+}
+
+h2, .h2 {
+    font-size: var(--type-headline-med);
+    line-height: calc(var(--line-global) * 2)
+}
+
+h4, .h4 {
+    color: var(--light-black);
+}
+
+a {
+    color: var(--text-color);
+}
+
+a:hover {
+    opacity: 0.75;
+}
+
+p {
+    color: var(--text-color);  
+}
+
+p a {
+    border-bottom: var(--standard-border);
+}
+
+p a:hover {
+    border-bottom: var(--black);
+}
+
+.text-link {
+    color: var(--black);
+}
+
+/* UTILITY CLASSES */
+.grid {
+    display: grid;
+    grid-column-gap: var(--gutter-global);
+    grid-row-gap: var(--gutter-global);
+}
+
+.grid > * {
+    min-width: 0;
+    min-height: 0;
+}
+
+/* HEADER */
+
+.header-global {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--header-background-color);
+    padding: var(--line-global) var(--offset-global);
+}
+
+.header-global .shop-link {
+    order: -1;
+}
+
+.cart-close-text {
+    display: none;
+}
+
+/* FOOTER */
+
+.footer-global {
+ background-color: var(--footer-background-color);
+ margin-top: var(--offset-global);
+ border-top: var(--standard-border);
+}
+
+.footer-global h4 {
+    margin-bottom: var(--line-global);
+}
+
+.footer-top, .footer-bottom {
+    padding: var(--offset-global);
+}
+
+.footer-top {
+    grid-template-columns: 2fr 1fr 1fr;   
+}
+
+.footer-bottom {
+    border-top: var(--standard-border);
+}
+
+.social-links a {
+    display: inline-block;    
+}
+
+.social-links a:not(:last-child) {
+    margin-right: calc(var(--line-global)/2);
+}
