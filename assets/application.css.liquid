@@ -96,7 +96,7 @@ ul, ol {
 
  /* */
 
-h1, .h1, h2, .h2 {
+h1, .h1, h2, .h2, h3, .h3 {
     font-family: var(--headline-font);
     font-weight: var(--type-bold);
     color: var(--light-black);
@@ -110,6 +110,11 @@ h1, .h1 {
 h2, .h2 {
     font-size: var(--type-headline-med);
     line-height: calc(var(--line-global) * 2)
+}
+
+h3, .h3 {
+    font-size: var(--type-body-med);
+    line-height: var(--line-global);
 }
 
 h4, .h4 {
@@ -140,7 +145,7 @@ p a:hover {
     color: var(--black);
 }
 
-button[type="submit"] {
+button[type="submit"], button[type="button"] {
     /* reset-input */
     appearance: none;
     -webkit-appearance: none;
@@ -173,7 +178,8 @@ button[type="submit"]:disabled {
     text-decoration: line-through;
 }
 
-button[type="submit"]:not(:disabled):hover {
+button[type="submit"]:not(:disabled):hover, 
+button[type="button"]:not(:disabled):hover {
     filter: brightness(0.9);
   }
 
@@ -303,7 +309,7 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
     padding: var(--offset-global);
     display: flex;
     flex-direction: column;
-    
+
     text-align: center;
 }
 
@@ -383,7 +389,7 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
     padding: calc(var(--line-global)/4);
     border: 1px solid transparent;
     color: var(--text-color-light-white);
-    transition: border 0.2s ease-in;
+    transition: border 0.1s ease-in;
 }
 
 .variant-radio:checked + label {
@@ -440,4 +446,60 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
 
 #add-to-cart-btn {
     margin-top: var(--line-global);
+}
+
+/* CART SHARED STYLES */
+.cart-lines {
+    margin-top: var(--line-global);
+    border-top: var(--standard-border-white);
+    border-bottom: var(--standard-border-white);
+    padding: var(--line-global) 0;
+}
+
+.cart-empty-text {
+    margin: calc(var(--line-global) * 4) 0;
+}
+
+/* CART PAGE */
+
+.cart-page-contents {
+    background: var(--light-black);
+    padding: var(--offset-global);
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+/* LINE ITEM */
+.line-item .line-image {
+    width: 80px;
+    position: relative;
+}
+
+.line-item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.line-item .remove-line {
+    position: absolute;
+    width: var(--line-global);
+    height: var(--line-global);
+    top: calc(var(--line-global)/-2);
+    right: calc(var(--line-global)/-2);
+    color: var(--text-color-light-white);
+    transition: opacity 0.1s ease-in;
+    opacity: 0;
+}
+
+.line-item:hover .remove-line {
+    opacity: 1;
+}
+
+.line-item:not(:first-child) {
+    margin-top: var(--line-global);
+}
+
+.subtotal-line {
+    padding: var(--line-global) 0;
 }

@@ -1,8 +1,8 @@
-<div class="line-item">
+<div class="line-item flex-space-between text-white">
     <div class="line-info">
-        <a href="{{ item.url }}">
-            {{ item.product.title }}
-            <span>x {{item.quantity}}</span>
+        <a class="line-title" href="{{ item.url }}">
+            <span class="h3">{{ item.product.title }}</span>
+            <span class="accent-color">x {{item.quantity}}</span>
         </a>
        <p>
            {{ item.variant.title }} &mdash; {{ item.line_price | money }}
@@ -13,7 +13,7 @@
     </div>
     <div class="line-image">
         <a href="{{ item.url }}">
-            <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+            <img src="{{ item | img_url: '200x200', crop: 'center' }}" alt="{{ item.title | escape }}">
           </a>
           <a class="remove-line" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
               <img src="{{ 'x-remove.svg' | asset_url }}" alt="Remove" />
