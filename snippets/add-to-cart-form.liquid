@@ -1,12 +1,12 @@
 <form action="/cart/add" enctype="multipart/form-data" id="add-to-cart-form" method="post">
 
     {% if product.variants.size > 1 %}
-        <div class="option-row">
+        <div class="option-row flex-space-between">
             <span class="option-title">{{product.options.first}}</span>
             <div class="option-fieldset">
                 {% for variant in product.variants %}
-                    <input id="variant-{{ forloop.index }}" class="js-variant-radio" name="id" type="radio" value="{{ variant.id }}" data-inventory-quantity="{{ variant.inventory_quantity}}" {% unless variant.available %} disabled {% endunless %}>
-                    <label for="variant-{{ forloop.index }}">{{ variant.title }}</label>
+                    <input id="variant-{{ forloop.index }}" class="visually-hidden variant-radio js-variant-radio" name="id" type="radio" value="{{ variant.id }}" data-inventory-quantity="{{ variant.inventory_quantity}}" {% unless variant.available %} disabled {% endunless %}>
+                    <label class="spaced-caps" for="variant-{{ forloop.index }}">{{ variant.title }}</label>
                 {% endfor %}
             </div>
         </div>
@@ -14,8 +14,8 @@
         <input type="hidden" name="id" value="{{ product.variants.first.id }}">
     {% endif %}
 
-    <div class="option-row">
-        <label for="Quantity">{{ 'product.form.quantity' | t }}</label>
+    <div class="option-row flex-space-between">
+        <label class="option-title" for="Quantity">{{ 'product.form.quantity' | t }}</label>
         <div class="option-fieldset">
             <div class="visually-hidden">
                 {% if product.variants.size == 1 %}

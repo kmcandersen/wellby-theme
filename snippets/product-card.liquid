@@ -10,7 +10,7 @@
             </a>
 
             <div class="below-title">
-                <p>{{ product.description | strip_html | split: '.' | first | append: '.'}}</p>
+                <p class="product-description>{{ product.description | strip_html | split: '.' | first | append: '.'}}</p>
                 {% if product.variants.size > 1 %}
                     <span class="accent-color">{{ 'product.card.options' | t: optionCount: product.variants.size }}
                         &mdash;</span>
