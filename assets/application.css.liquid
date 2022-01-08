@@ -222,7 +222,15 @@ button[type="button"]:not(:disabled):hover {
 .valign-center {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+}
+
+/* these 2 replace justify-content: center, which vert centered mini-cart contents but blocked top & bottom from scrollable area */
+.valign-center > *:first-child {
+    margin-top: auto;
+}
+.valign-center > *:last-child {
+    margin-bottom: auto;
 }
 
 .ta-center {
@@ -502,4 +510,22 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
 
 .subtotal-line {
     padding: var(--line-global) 0;
+}
+
+/* MINI-CART */
+
+#mini-cart {
+    position: fixed;
+    top: var(--header-height);
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 380px;
+    background: var(--light-black);
+}
+
+#mini-cart .mini-cart-contents {
+    overflow: auto;
+    padding: var(--offset-global);
+    height: 100%;
 }
