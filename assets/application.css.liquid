@@ -522,10 +522,39 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
     width: 100%;
     max-width: 380px;
     background: var(--light-black);
+    display: none;
 }
 
 #mini-cart .mini-cart-contents {
     overflow: auto;
     padding: var(--offset-global);
     height: 100%;
+}
+
+/* MINI-CART TOGGLE */
+.cart-link {
+    width: 62px;
+}
+
+/* prevents scrolling in dimmed area  */
+html.mini-cart-open {
+    overflow: hidden;
+}
+
+html.mini-cart-open #mini-cart {
+    display: block;
+}
+
+html.mini-cart-open .cart-link .cart-text {
+    display: none;
+}
+
+html.mini-cart-open .cart-link .cart-close-text {
+    display: inline-block;
+}
+
+html.mini-cart-open main {
+    opacity: 0.3;
+    pointer-events: none;
+    user-select: none;
 }

@@ -4,6 +4,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     setupAddForm();
     addToCart();
+    handleMiniCart();
 })
   
 const setupAddForm = function() {
@@ -139,7 +140,7 @@ const addToCart = function() {
 }}
 
 // used in addToCart & removeMiniCartLine event listeners
-function updateMiniCart() {
+const updateMiniCart = function() {
     // ajax call to get html of updated Cart page; save to var
     // delete existing content of js-mini-cart-contents (everything inside the cart-contents snippet rendered in mini-cart)
     // append cart html to js-mini-cart-contents, apply removeMiniCartLine event listener
@@ -169,6 +170,14 @@ function updateMiniCart() {
             const updatedCartItemCount = cart.dataset.cartItemCount;
             // update cart count in header
             document.querySelector(".js-cart-item-count").textContent = updatedCartItemCount;
+
+            const htmlContainer = document.querySelector('html');
+            if (updatedCartItemCount > 0){
+                htmlContainer.classList.add("mini-cart-open");
+            } else {
+                htmlContainer.classList.remove("mini-cart-open"); 
+            }
+           
         
         })
         .catch((err) => console.error(err));
@@ -176,7 +185,7 @@ function updateMiniCart() {
 
 // applies an event listener to 'remove' btns in mini-cart
 // Must run after mini-cart appended, not on initial load, so event listener is applied
-const removeMiniCartLine = () => {
+function removeMiniCartLine() {
     // get remove btn(s) inside mini-cart only--not on Cart page
     const miniCartRemoveBtns = document.querySelectorAll('#mini-cart .js-remove-line');
 
@@ -215,7 +224,22 @@ const removeMiniCartLine = () => {
     }   
 }
 
+const handleMiniCart = function() {
+    const htmlContainer = document.querySelector('html');
+    const miniCartLink = document.querySelector('a.js-cart-link')
+    miniCartLink.addEventListener('click', onMiniCartClick)
 
+    const keepShoppingLink = document.querySelector('#mini-cart .js-keep-shopping-btn')
+    keepShoppingLink.addEventListener('click', onMiniCartClick)
 
+    function onMiniCartClick(event) {
+        event.preventDefault();
 
-
+        let isCartOpen = htmlContainer.classList.contains("mini-cart-open")
+        if (!isCartOpen){
+            htmlContainer.classList.add("mini-cart-open")
+        } else {
+            htmlContainer.classList.remove("mini-cart-open")
+        }
+    }
+}
