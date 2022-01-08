@@ -10,14 +10,14 @@
             </a>
 
             <div class="below-title">
-                <p class="product-description>{{ product.description | strip_html | split: '.' | first | append: '.'}}</p>
+                <p class="product-description">{{ product.description | strip_html | split: '.' | first | append: '.'}}</p>
                 {% if product.variants.size > 1 %}
                     <span class="accent-color">{{ 'product.card.options' | t: optionCount: product.variants.size }}
                         &mdash;</span>
                 {% endif %}
 
                 {% if product.available %}
-                    <a href="{{ product.url }}">{{ 'product.card.more_info' | t }}</a>
+                    <a class="text-link spaced-caps" href="{{ product.url }}">{{ 'product.card.more_info' | t }}</a>
                 {% else %}
                     {{ 'product.form.sold_out' | t }}
                 {% endif %}
