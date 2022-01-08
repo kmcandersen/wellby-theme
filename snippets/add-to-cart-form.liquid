@@ -11,7 +11,7 @@
             </div>
         </div>
     {% else %}
-        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <input class="js-no-variant" type="hidden" name="id" value="{{ product.variants.first.id }}">
     {% endif %}
 
     <div class="option-row flex-space-between">

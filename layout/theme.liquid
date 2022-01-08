@@ -19,5 +19,8 @@
 
     {% include 'footer' %}
   </main>
+  {% if template != 'cart' %}
+    {% include 'mini-cart' %}
+  {% endif %}
 </body>
 </html>
