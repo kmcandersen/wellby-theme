@@ -15,7 +15,7 @@
 
     {% for image in product.images %}
         <div class="product-image">
-            <img src="{{ image.src | img_url: '600x600', crop: 'center' }}" alt="{{ image.alt | escape }}">
+            <img src="{{ image.src | img_url: '1200x1200', crop: 'center' }}" alt="{{ image.alt | escape }}">
         </div>
     {% endfor %}
 </div>
