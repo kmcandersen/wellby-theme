@@ -547,6 +547,7 @@ h1, .h1, h2, .h2, h3, .h3, .h4, a {
 /* MINI-CART TOGGLE */
 .cart-link {
     width: 62px;
+    text-align: right;
 }
 
 /* prevents scrolling in dimmed area  */
@@ -590,4 +591,56 @@ html.mini-cart-open main {
 /* 404 Page */
 #page-404 {
     min-height: calc(100vh - var(--header-height));
+}
+
+/* RESPONSIVE STYLES */
+@media only screen and (max-width: 1023px) {
+
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .wrapper {
+        padding-left: var(--line-global);
+        padding-right: var(--line-global);
+    }
+
+    .mini-cart-contents {
+        padding: var(--line-global);
+    }
+
+    .product-card .card-image {
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .product-card .card-info {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .product-image:first-of-type {
+        grid-row: 1;
+    }
+
+    .product-info {
+        grid-row: 2;
+    }
+
+    .option-fieldset {
+        max-width: 50%;
+    }
+
+    .variant-radio+label {
+        display: block;
+    }
+
+    /* so visible wo hover on mobile */
+    .line-item .remove-line {
+        opacity: 1;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
 }
